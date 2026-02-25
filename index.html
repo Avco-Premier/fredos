@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fredo's Pizza & Pasta - Massapequa Park</title>
+    <title>Fredo's Pizza & Pasta | Best Pizza in Massapequa Park, NY</title>
     <style>
         * {
             margin: 0;
@@ -12,17 +12,25 @@
         }
 
         body {
-            font-family: Georgia, 'Times New Roman', serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             color: #2c2c2c;
-            line-height: 1.5;
-            background-color: #fefefe;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #6b2737 0%, #4a1a24 100%);
+            background-attachment: fixed;
         }
 
         /* Navigation */
         nav {
-            background-color: #1a1a1a;
-            padding: 0.8rem 0;
-            border-bottom: 3px solid #d4af37;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         nav .container {
@@ -35,93 +43,150 @@
         }
 
         nav .logo {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: normal;
-            color: #d4af37;
-            font-family: 'Times New Roman', serif;
+            color: #2c2c2c;
+            text-decoration: none;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
+            align-items: center;
         }
 
         nav a {
-            color: #f5f5f5;
+            color: #2c2c2c;
             text-decoration: none;
-            font-weight: normal;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: #c41e3a;
+        }
+
+        nav .btn-order {
+            background-color: #c41e3a;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav .btn-order:hover {
+            background-color: #a01629;
         }
 
         /* Hero Section */
         .hero {
-            background: #2c2c2c;
+            margin-top: 70px;
+            background-image: 
+                linear-gradient(rgba(107, 39, 55, 0.85), rgba(74, 26, 36, 0.85)),
+                url('https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/25d47468-3b09-4676-b817-07e19c70e131.JPG');
+            background-size: cover;
+            background-position: center;
             color: #f5f5f5;
-            padding: 80px 2rem 60px;
+            padding: 120px 2rem 100px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: normal;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 4rem;
             margin-bottom: 0.5rem;
             font-weight: normal;
-            color: #d4af37;
-            font-family: 'Times New Roman', serif;
+            color: #f5f5f5;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+        .hero h1 em {
+            font-style: italic;
+            color: #d4af37;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
             color: #e0e0e0;
             font-style: italic;
         }
 
-        .hero .cta-buttons {
+        .hero-since {
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            color: #b8b8b8;
+        }
+
+        .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 0.9rem 2rem;
             font-size: 0.95rem;
-            border: 2px solid #d4af37;
-            border-radius: 0;
+            border: 2px solid;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            font-weight: normal;
             font-family: Georgia, serif;
         }
 
         .btn-primary {
-            background-color: #d4af37;
-            color: #1a1a1a;
+            background-color: #c41e3a;
+            color: white;
+            border-color: #c41e3a;
         }
 
         .btn-primary:hover {
-            background-color: transparent;
-            color: #d4af37;
+            background-color: #a01629;
+            border-color: #a01629;
         }
 
         .btn-secondary {
             background-color: transparent;
             color: #d4af37;
+            border-color: #d4af37;
         }
 
         .btn-secondary:hover {
             background-color: #d4af37;
             color: #1a1a1a;
         }
+
+
 
         /* Container */
         .container {
@@ -130,113 +195,175 @@
             padding: 0 2rem;
         }
 
-        /* Features Section */
-        .features {
-            background-color: #f9f9f9;
-            padding: 50px 2rem;
-            border-bottom: 1px solid #ddd;
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            background-color: rgba(255, 255, 255, 0.98);
+            margin: 2rem 0;
         }
 
-        .features .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        section.hero {
+            margin: 0;
+            background-color: transparent;
         }
 
-        .feature-card {
-            background: white;
-            padding: 1.8rem;
-            border: 1px solid #e0e0e0;
-            text-align: left;
+        section.catering {
+            background: linear-gradient(135deg, #6b2737 0%, #4a1a24 100%);
         }
 
-        .feature-card h3 {
-            color: #2c2c2c;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c41e3a;
+            margin-bottom: 1rem;
             font-weight: normal;
         }
 
-        .feature-card p {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 50px 2rem;
-            background-color: white;
-        }
-
-        .gallery h2 {
-            text-align: center;
-            font-size: 2rem;
+        h2 {
+            font-size: 2.5rem;
             margin-bottom: 2rem;
-            color: #2c2c2c;
             font-weight: normal;
+            color: #2c2c2c;
         }
 
-        .gallery-grid {
+        h2 em {
+            font-style: italic;
+            color: #c41e3a;
+        }
+
+        /* About Section */
+        .about {
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .about strong {
+            color: #2c2c2c;
+        }
+
+        .about-signature {
+            font-style: italic;
+            color: #888;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            margin-top: 3rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+        }
+
+        .about-badge {
+            display: inline-block;
+            background-color: #2c2c2c;
+            color: #d4af37;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* Menu Section */
+        .menu {
+        }
+
+        .menu-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .gallery-item {
-            border: 1px solid #ddd;
+        .menu-item {
+            background: #fafafa;
+            border-radius: 8px;
             overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .gallery-item img {
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-item img {
             width: 100%;
-            height: 220px;
+            height: 250px;
             object-fit: cover;
-            display: block;
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+            font-weight: normal;
+        }
+
+        .menu-item p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* Catering Section */
         .catering {
-            background-color: #f4f4f4;
-            color: #2c2c2c;
-            padding: 50px 2rem;
+            background: linear-gradient(135deg, #6b2737 0%, #4a1a24 100%);
+            color: white;
             text-align: center;
-            border-top: 1px solid #ddd;
         }
 
         .catering h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: normal;
-            color: #2c2c2c;
+            color: white;
         }
 
         .catering p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #555;
+            margin: 0 auto 2rem;
+            color: #d0d0d0;
+            line-height: 1.8;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 50px 2rem;
-            background-color: white;
-            border-top: 1px solid #ddd;
+        /* Location Section */
+        .location {
         }
 
-        .contact h2 {
+        .location-content {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #2c2c2c;
-            font-weight: normal;
+            margin-bottom: 3rem;
         }
 
-        .contact-content {
+        .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
@@ -244,62 +371,159 @@
             margin: 0 auto;
         }
 
-        .contact-card {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            border: 1px solid #e0e0e0;
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .contact-card h3 {
-            color: #2c2c2c;
-            margin-bottom: 0.8rem;
+        .location-card h3 {
             font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #2c2c2c;
             font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .contact-card a {
-            color: #d4af37;
+        .location-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .location-card a {
+            color: #c41e3a;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .location-card a:hover {
+            color: #a01629;
             text-decoration: underline;
-            font-weight: normal;
         }
 
-        .contact-card a:hover {
-            color: #b8941f;
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e5e5;
+            color: #555;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
         }
 
         /* Footer */
         footer {
             background-color: #1a1a1a;
-            color: #ccc;
-            text-align: center;
-            padding: 2rem;
-            border-top: 3px solid #d4af37;
+            color: #b8b8b8;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #d4af37;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #b8b8b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
             font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            margin-top: 1rem;
+            color: #888;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.85rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
             nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
+                gap: 1rem;
+                font-size: 0.85rem;
             }
 
-            .hero .cta-buttons {
+            nav .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
 
             .btn {
-                width: auto;
-                min-width: 200px;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 1.5rem;
+            }
+
+            .menu-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
@@ -308,95 +532,148 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">Fredo's Pizza & Pasta</div>
+            <a href="#" class="logo">Fredo's Pizza & Pasta</a>
             <ul>
-                <li><a href="#gallery">Menu</a></li>
-                <li><a href="#catering">Catering</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#location">Visit Us</a></li>
+                <li><a href="tel:5167982400">Call</a></li>
+                <li><a href="https://fredospizzapasta.avcoindustries.com/order-now" class="btn-order">Order Now</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Fredo's Pizza & Pasta</h1>
-        <p>Authentic Italian Cuisine • Massapequa Park Since 1987</p>
-        <div class="cta-buttons">
-            <a href="https://fredospizzapasta.avcoindustries.com/order-now" class="btn btn-primary">Order Online</a>
-            <a href="https://www.fredospizzaonline.com/#/" class="btn btn-secondary">Menufy</a>
-            <a href="https://slicelife.com/restaurants/ny/massapequa-park/11762/fredo-s-pizza-pasta-massapequa-park/menu?utm_campaign=order_now_button&utm_medium=referral&utm_source=" class="btn btn-secondary">Slice</a>
-            <a href="#contact" class="btn btn-secondary">Call Us</a>
+        <div class="hero-content">
+            <p class="hero-subtitle">Established 1987 • Massapequa Park, New York</p>
+            <h1>Fredo's <em>Pizza & Pasta</em></h1>
+            <p class="hero-tagline">"Authentic Italian Cuisine"</p>
+            <p class="hero-since">Serving the Community for Over 35 Years</p>
+            <div class="hero-buttons">
+                <a href="https://fredospizzapasta.avcoindustries.com/order-now" class="btn btn-primary">Order Online</a>
+                <a href="#about" class="btn btn-secondary">Our Story</a>
+            </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features">
+    <!-- About Section -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="feature-card">
-                <h3>Catering Available</h3>
-                <p>We cater parties of all sizes. Perfect for office meetings, family gatherings, and special events.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Fresh Daily</h3>
-                <p>Our dough is made fresh daily using traditional recipes passed down through generations.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Local Delivery</h3>
-                <p>Fast, reliable delivery throughout Massapequa Park and surrounding areas.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="gallery" id="gallery">
-        <h2>Our Menu</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/25d47468-3b09-4676-b817-07e19c70e131.JPG" alt="Fresh Pizza">
-            </div>
-            <div class="gallery-item">
-                <img src="https://slice-menu-assets-prod.imgix.net/21042/1630699488_245f5fa576?fit=crop&w=480&h=480" alt="Specialty Pizza">
-            </div>
-            <div class="gallery-item">
-                <img src="https://slice-menu-assets-prod.imgix.net/21042/1630699500_a7b7d82472?fit=crop&w=480&h=480" alt="Pasta Dishes">
+            <div class="about-content">
+                <p class="section-title">Our Story</p>
+                <h2>Welcome to <em>Fredo's</em></h2>
+                <p>Since <strong>1987</strong>, Fredo's Pizza & Pasta has been a cornerstone of the Massapequa Park community, serving authentic Italian cuisine with passion and pride.</p>
+                <p>Our dough is made fresh daily using traditional recipes that have been perfected over decades. We offer a full arrangement of Italian dishes and pizza, prepared with the same care and dedication that has made our family proud for over 35 years.</p>
+                <p>We deliver, and we also cater for any occasion. We look forward to continuing to serve this wonderful community with good, wholesome Italian food that brings families together.</p>
+                <p class="about-signature">— The Fredo's Family</p>
+                <div class="about-badge">
+                    <strong>1987</strong><br>Est. Massapequa Park
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Catering -->
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="menu-content">
+                <p class="section-title">From Our Kitchen</p>
+                <h2>Authentic <em>Italian</em> Favorites</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/25d47468-3b09-4676-b817-07e19c70e131.JPG" alt="Classic Pizza">
+                    <div class="menu-item-content">
+                        <h3>Classic Pizza</h3>
+                        <p>Hand-tossed, made fresh daily</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://slice-menu-assets-prod.imgix.net/21042/1630699488_245f5fa576?fit=crop&w=480&h=480" alt="Specialty Pies">
+                    <div class="menu-item-content">
+                        <h3>Specialty Pies</h3>
+                        <p>Unique combinations & flavors</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://slice-menu-assets-prod.imgix.net/21042/1630699500_a7b7d82472?fit=crop&w=480&h=480" alt="Fresh Pasta">
+                    <div class="menu-item-content">
+                        <h3>Fresh Pasta</h3>
+                        <p>Traditional family recipes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
     <section class="catering" id="catering">
         <div class="container">
-            <h2>Catering Services</h2>
-            <p>Let us handle your next event. We offer full catering services for parties large and small.</p>
-            <p>From corporate lunches to wedding receptions, our experienced team will work with you to create the perfect menu for your guests. Call us to discuss your catering needs.</p>
-            <a href="https://fredospizzapasta.avcoindustries.com/order-now" class="btn btn-primary">Request Catering Quote</a>
+            <h2>Catering for Any Occasion</h2>
+            <p>From family gatherings to corporate events—let us bring authentic Italian cuisine to your next event. We cater parties of all sizes with the same quality and care you've come to expect from Fredo's.</p>
+            <a href="tel:5167982400" class="btn btn-primary">Call to Order</a>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <h2>Visit Us</h2>
-        <div class="contact-content">
-            <div class="contact-card">
-                <h3>Phone</h3>
-                <p><a href="tel:5167982400">(516) 798-2400</a></p>
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="location-content">
+                <p class="section-title">Find Us</p>
+                <h2>Visit <em>Fredo's</em></h2>
             </div>
-            <div class="contact-card">
-                <h3>Address</h3>
-            <div class="contact-card">
-                <h3>Online Ordering</h3>
-                <p><a href="https://fredospizzapasta.avcoindustries.com/order-now">Main Site</a> | <a href="https://www.fredospizzaonline.com/#/">Menufy</a> | <a href="https://slicelife.com/restaurants/ny/massapequa-park/11762/fredo-s-pizza-pasta-massapequa-park/menu?utm_campaign=order_now_button&utm_medium=referral&utm_source=">Slice</a></p>
-            </div>
-                <p><a href="https://fredospizzapasta.avcoindustries.com/order-now">Place Your Order</a></p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <h3>Address</h3>
+                    <p>Fredo's Pizza & Pasta<br>
+                    4855 Merrick Rd<br>
+                    Massapequa Park, NY 11762</p>
+                </div>
+                <div class="location-card">
+                    <h3>Telephone</h3>
+                    <p><a href="tel:5167982400">(516) 798-2400</a></p>
+                    <p style="margin-top: 1.5rem;"><strong>Order Online:</strong><br>
+                    <a href="https://fredospizzapasta.avcoindustries.com/order-now">Main Site</a> • 
+                    <a href="https://www.fredospizzaonline.com/#/">Menufy</a> • 
+                    <a href="https://slicelife.com/restaurants/ny/massapequa-park/11762/fredo-s-pizza-pasta-massapequa-park/menu?utm_campaign=order_now_button&utm_medium=referral&utm_source=">Slice</a></p>
+                </div>
+                <div class="location-card">
+                    <h3>Hours of Operation</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday – Thursday</span><span>11:00 AM – 10:00 PM</span></li>
+                        <li><span>Friday – Saturday</span><span>11:00 AM – 11:00 PM</span></li>
+                        <li><span>Sunday</span><span>12:00 PM – 10:00 PM</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2024 Fredo's Pizza & Pasta</p>
-            <p>4855 Merrick Rd. Massapequa Park, NY 11762 | (516) 798-2400</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Fredo's Pizza & Pasta</h4>
+                <p>Serving authentic Italian cuisine since 1987. Over 35 years of traditional recipes and quality ingredients.</p>
+                <p class="footer-tagline">"Authentic Italian Cuisine"</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">Our Story</a>
+                <a href="#menu">Menu</a>
+                <a href="#location">Location</a>
+                <a href="https://fredospizzapasta.avcoindustries.com/order-now">Order Online</a>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <p>Mon – Thu: 11:00 – 10:00</p>
+                <p>Fri – Sat: 11:00 – 11:00</p>
+                <p>Sunday: 12:00 – 10:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fredo's Pizza & Pasta. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
